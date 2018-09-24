@@ -12,3 +12,4 @@ PACKAGES="iptables"
 # systemd: An init system that will start kata-agent if kata-agent
 #          itself is not configured as init process.
 [ "$AGENT_INIT" == "no" ] && PACKAGES+=" systemd" || true
+[ "$SECCOMP" = "yes" ] && PACKAGES+=" libseccomp" || true

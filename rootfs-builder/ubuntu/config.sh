@@ -22,3 +22,5 @@ case $(arch) in
 	aarch64) ARCHITECTURE="arm64";;
 	(*) die "$(arch) not supported "
 esac
+
+[ "$SECCOMP" = "yes" ] && PACKAGES+=" libseccomp2" || true

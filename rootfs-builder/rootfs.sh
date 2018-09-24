@@ -266,6 +266,7 @@ if [ -n "${USE_DOCKER}" ] ; then
 		--env KERNEL_MODULES_DIR="${KERNEL_MODULES_DIR}" \
 		--env EXTRA_PKGS="${EXTRA_PKGS}" \
 		--env OSBUILDER_VERSION="${OSBUILDER_VERSION}" \
+		--env SECCOMP="${SECCOMP}" \
 		-v "${script_dir}":"/osbuilder" \
 		-v "${ROOTFS_DIR}":"/rootfs" \
 		-v "${script_dir}/../scripts":"/scripts" \
@@ -292,7 +293,7 @@ pushd "${GOPATH_LOCAL}/src/${GO_AGENT_PKG}"
 [ -n "${AGENT_VERSION}" ] && git checkout "${AGENT_VERSION}" && OK "git checkout successful"
 make clean
 make INIT=${AGENT_INIT}
-make install DESTDIR="${ROOTFS_DIR}" INIT=${AGENT_INIT}
+make install DESTDIR="${ROOTFS_DIR}" INIT=${AGENT_INIT} SECCOMP=${SECCOMP}
 popd
 
 AGENT_DIR="${ROOTFS_DIR}/usr/bin"

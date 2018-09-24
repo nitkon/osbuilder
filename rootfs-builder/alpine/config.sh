@@ -16,3 +16,4 @@ MIRROR=http://dl-5.alpinelinux.org/alpine
 # Mandatory Packages that must be installed
 #  - iptables: Need by Kata agent
 PACKAGES="iptables"
+[ "$SECCOMP" = "yes" ] && PACKAGES+=" libseccomp" || true
